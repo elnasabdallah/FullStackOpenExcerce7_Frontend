@@ -1,0 +1,16 @@
+.error {
+  border: 5px solid rgba(202, 58, 5, 0.823);
+  color: rgba(202, 58, 5, 0.823);
+  background: rgb(237, 229, 229);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+}
+.success {
+  border: 5px solid rgba(58, 124, 48, 0.823);
+  color: rgba(58, 124, 48, 0.823);
+  background: rgb(237, 229, 229);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
