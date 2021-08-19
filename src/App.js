@@ -54,7 +54,7 @@ const App = () => {
   const addBlog = async newBlog => {
     try {
       const addedBlog = await blogService.create(newBlog);
-      blogFormRef.current.toggleVisibility();
+      // blogFormRef.current.toggleVisibility();
       setAlert({
         type: "success",
         msg: `a new blog ${addedBlog.title} by ${addedBlog.author} added`,
