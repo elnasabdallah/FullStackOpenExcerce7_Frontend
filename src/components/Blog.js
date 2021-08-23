@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 const Blog = ({ blog, updateBlog, deleteBlog }) => {
   const [visibilty, setVisibilty] = useState(false);
@@ -9,7 +10,7 @@ const Blog = ({ blog, updateBlog, deleteBlog }) => {
   const handleToggle = () => {
     setVisibilty(!visibilty);
   };
-  const onLike = blog => {
+  const onLike = (blog) => {
     const updatedBlog = {
       title: blog.title,
       author: blog.author,
@@ -20,7 +21,7 @@ const Blog = ({ blog, updateBlog, deleteBlog }) => {
 
     updateBlog(blog.id, updatedBlog);
   };
-  const handleDelete = id => {
+  const handleDelete = () => {
     const confirm = window.confirm(
       `remove blog ${blog.title} by ${blog.author}`
     );
@@ -29,24 +30,24 @@ const Blog = ({ blog, updateBlog, deleteBlog }) => {
     }
   };
   return (
-    <div style={blogStyle} className='blog'>
+    <div style={blogStyle} className="blog">
       <div style={topStyle}>
         {blog.title} {blog.author} <button onClick={handleToggle}>view</button>
       </div>
-      <div style={bodyStyle} className='blogDetail'>
-        <span className='title'> {blog.title} </span>
+      <div style={bodyStyle} className="blogDetail">
+        <span className="title"> {blog.title} </span>
         <button onClick={handleToggle}>hide</button>
         <br />
-        <span className='url'> {blog.url}</span>
+        <span className="url"> {blog.url}</span>
         <br />
-        Likes <span className='likes'>{blog.likes}</span>{" "}
+        Likes <span className="likes">{blog.likes}</span>{" "}
         <button onClick={() => onLike(blog)}>like</button>
         <br />
         <button style={btn} onClick={() => handleDelete(blog)}>
           remove
         </button>
         <br />
-        <span className='author'> {blog.author}</span>
+        <span className="author"> {blog.author}</span>
       </div>
     </div>
   );
@@ -62,5 +63,10 @@ const blogStyle = {
   borderWidth: 1,
   marginBottom: 5,
   borderColor: "black",
+};
+Blog.propTypes = {
+  blog: PropTypes.object.isRequired,
+  updateBlog: PropTypes.func.isRequired,
+  deleteBlog: PropTypes.func.isRequired,
 };
 export default Blog;

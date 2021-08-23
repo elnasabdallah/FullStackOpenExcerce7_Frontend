@@ -15,7 +15,7 @@ const App = () => {
   const blogFormRef = useRef();
 
   /*****handle user login********** */
-  const handleLogin = async loginDetails => {
+  const handleLogin = async (loginDetails) => {
     try {
       const user = await loginServices.login(loginDetails);
       setUser(user);
@@ -34,7 +34,7 @@ const App = () => {
   const updateBlog = async (id, updatedBlog) => {
     try {
       const result = await blogService.put(id, updatedBlog);
-      const updatedBlogs = blogs.map(blog =>
+      const updatedBlogs = blogs.map((blog) =>
         blog.id === result.id ? result : blog
       );
       updatedBlogs.sort((a, b) => (a.likes > b.likes ? -1 : 1));
@@ -51,7 +51,7 @@ const App = () => {
   };
 
   /**Create a new blog */
-  const addBlog = async newBlog => {
+  const addBlog = async (newBlog) => {
     try {
       const addedBlog = await blogService.create(newBlog);
       // blogFormRef.current.toggleVisibility();
@@ -72,11 +72,11 @@ const App = () => {
     }, 5000);
   };
 
-  const deleteBlog = async id => {
+  const deleteBlog = async (id) => {
     try {
       const result = await blogService.remove(id);
       console.log(result);
-      const newBlogs = blogs.filter(blog => blog.id !== id);
+      const newBlogs = blogs.filter((blog) => blog.id !== id);
       newBlogs.sort((a, b) => (a.likes > b.likes ? -1 : 1));
       setBlogs(newBlogs);
       setAlert({
@@ -109,7 +109,7 @@ const App = () => {
 
   if (user === null) {
     return (
-      <Toggleable label='login'>
+      <Toggleable label="login">
         <Login handleLogin={handleLogin} alert={alert} />
       </Toggleable>
     );
@@ -121,10 +121,10 @@ const App = () => {
         <p>
           {user.username} logged In <button onClick={logOut}>logout</button>
         </p>
-        <Toggleable label='create new blog' ref={blogFormRef}>
+        <Toggleable label="create new blog" ref={blogFormRef}>
           <BlogForm addBlog={addBlog} />
         </Toggleable>
-        {blogs.map(blog => (
+        {blogs.map((blog) => (
           <Blog
             key={blog.id}
             blog={blog}

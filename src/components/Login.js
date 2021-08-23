@@ -5,7 +5,7 @@ import Alert from "./Alert";
 const Login = ({ handleLogin, alert }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState();
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     handleLogin({ username, password });
   };
@@ -16,24 +16,24 @@ const Login = ({ handleLogin, alert }) => {
 
         {alert && <Alert alert={alert} />}
         <div>
-          <label htmlFor='username'>Username</label>
+          <label htmlFor="username">Username</label>
           <input
-            type='text'
-            id='username'
+            type="text"
+            id="username"
             onChange={({ target }) => setUsername(target.value)}
             value={username}
           ></input>
         </div>
         <div>
-          <label htmlFor='password'>Password</label>
+          <label htmlFor="password">Password</label>
           <input
-            type='password'
-            id='password'
+            type="password"
+            id="password"
             onChange={({ target }) => setPassword(target.value)}
             value={password}
           ></input>
         </div>
-        <input id='submit' type='submit' value='Login' />
+        <input id="submit" type="submit" value="Login" />
       </form>
     </div>
   );

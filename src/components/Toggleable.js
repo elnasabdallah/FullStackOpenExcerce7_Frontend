@@ -23,5 +23,5 @@ const Toggleable = React.forwardRef((prop, ref) => {
     </div>
   );
 });
-
+Toggleable.displayName = "Toggleable";
 export default Toggleable;
