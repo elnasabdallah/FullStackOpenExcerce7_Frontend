@@ -40,4 +40,13 @@ const remove = async (id) => {
   const result = await axios.delete(`/api/blogs/${id}`, config);
   return result;
 };
-export default { getAll, setToken, create, put, remove };
+
+export const getBlog = async (id) => {
+  const result = await axios.get(`/api/blogs/${id}`);
+  return result.data;
+};
+export const postComment = async (blogId, comment) => {
+  const result = await axios.post(`/api/blogs/${blogId}/comments`, comment);
+  return result.data;
+};
+export default { getAll, setToken, create, put, remove, getBlog, postComment };

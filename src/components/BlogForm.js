@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-
-const BlogForm = ({ addBlog }) => {
+import { addBlog } from "../redux/actions/blogActions";
+import { useDispatch } from "react-redux";
+const BlogForm = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [url, setUrl] = useState("");
-
+  const dispatch = useDispatch();
   const onSubmit = (e) => {
     e.preventDefault();
-    addBlog({ title, author, url });
+    dispatch(addBlog({ title, author, url }));
   };
 
   return (

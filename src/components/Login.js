@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Alert from "./Alert";
-
-const Login = ({ handleLogin, alert }) => {
+import { login } from "./../redux/actions/userAction";
+import { useDispatch, useSelector } from "react-redux";
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState();
+  const dispatch = useDispatch();
+  const alert = useSelector((state) => state.alert);
   const onSubmit = (e) => {
     e.preventDefault();
-    handleLogin({ username, password });
+    dispatch(login({ username, password }));
   };
   return (
     <div>
