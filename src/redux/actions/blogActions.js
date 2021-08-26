@@ -52,8 +52,11 @@ export const updateBlog = (id, updatedBlog) => async (dispatch, getState) => {
       blog.id === result.id ? result : blog
     );
     updatedBlogs.sort((a, b) => (a.likes > b.likes ? -1 : 1));
+
+    //fecth populated blog
+    const result2 = await blogService.getBlog(id);
     dispatch({ type: FETCH_BLOGS, payload: updatedBlogs });
-    dispatch({ type: FETCH_BLOG, payload: result });
+    dispatch({ type: FETCH_BLOG, payload: result2 });
   } catch (error) {
     const alert = { type: "error", msg: error.message };
     dispatch({ type: SET_ALERT, payload: alert });

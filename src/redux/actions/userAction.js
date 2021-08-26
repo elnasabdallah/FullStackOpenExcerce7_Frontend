@@ -1,6 +1,7 @@
 import {
   CLEAR_USER,
   FETCH_USER,
+  RESET_ALERT,
   SET_ALERT,
   SET_USER,
   SET_USERS,
@@ -19,6 +20,10 @@ export const login = (loginDetails) => async (dispatch) => {
   } catch (error) {
     const alert = { type: "error", msg: "Invalid username or password" };
     dispatch({ type: SET_ALERT, payload: alert });
+
+    setTimeout(() => {
+      dispatch({ type: RESET_ALERT });
+    }, 5000);
   }
 };
 export const setUser = (user) => (dispatch) => {
@@ -36,6 +41,9 @@ export const fetchUsers = () => async (dispatch) => {
   } catch (error) {
     const alert = { type: "error", msg: error };
     dispatch({ type: SET_ALERT, payload: alert });
+    setTimeout(() => {
+      dispatch({ type: RESET_ALERT });
+    }, 5000);
   }
 };
 
@@ -51,5 +59,9 @@ export const fetchUser = (id) => async (dispatch, getState) => {
   } catch (error) {
     const alert = { type: "error", msg: error };
     dispatch({ type: SET_ALERT, payload: alert });
+
+    setTimeout(() => {
+      dispatch({ type: RESET_ALERT });
+    }, 5000);
   }
 };

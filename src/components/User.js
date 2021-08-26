@@ -18,15 +18,17 @@ const User = () => {
   }
 
   return (
-    <div>
-      <h1>{userDetails.name}</h1>
+    <div className="d-flex justify-content-center">
+      <div>
+        <h2 className="text-center m-5">{userDetails.name}</h2>
 
-      <h3>added blogs</h3>
-      <ul>
-        {userDetails.blogs.map((blog) => (
-          <li key={blog.id}>{blog.title}</li>
-        ))}
-      </ul>
+        <h3 className="text-center">Added blogs</h3>
+        <ul>
+          {userDetails.blogs.map((blog) => (
+            <li key={blog.id}>{blog.title}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

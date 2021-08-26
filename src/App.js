@@ -9,7 +9,9 @@ import blogService from "./services/blogs";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { BlogView } from "./components/BlogView";
-import Alert from "./components/Alert";
+
+import LoginPage from "./components/LoginPage";
+import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -25,16 +27,17 @@ const App = () => {
     dispatch(fetchUsers());
   }, []);
   return (
-    <div className="container">
+    <div>
       <Router>
         <Switch>
           <>
             <Header />
-            <Alert />
-            <Route path="/" exact component={Home} />
-            <Route path="/users" exact component={Users} />
-            <Route path="/users/:id" component={User} />
-            <Route path="/blogs/:id" component={BlogView} />
+
+            <PrivateRoute path="/" exact component={Home} />
+            <PrivateRoute path="/users" exact component={Users} />
+            <PrivateRoute path="/users/:id" component={User} />
+            <PrivateRoute path="/blogs/:id" component={BlogView} />
+            <Route path="/login" component={LoginPage} />
           </>
         </Switch>
       </Router>

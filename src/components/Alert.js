@@ -9,8 +9,8 @@ const Alert = () => {
   }
   const { type, msg } = alert;
   return (
-    <div>
-      <div className={type}>{msg}</div>
+    <div className="d-flex justify-content-center">
+      <div className={`${type} w-50`}>{msg}</div>
     </div>
   );
 };

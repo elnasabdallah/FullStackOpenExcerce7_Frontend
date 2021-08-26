@@ -12,21 +12,37 @@ const Header = () => {
   const { signedUser } = useSelector((state) => state.user);
   if (!signedUser) return null;
   return (
-    <div>
-      <div style={headerStyle}>
-        <Link to="/">blogs</Link> {"  "}
-        <Link to="/users">users</Link> {"  "} {signedUser.name} logged In{" "}
-        <button onClick={logOut}>logout</button>
+    <nav className="navbar navbar-dark bg-dark justify-content-space-between">
+      <div className="container justify-content-start">
+        <h2 className="navbar-brand">
+          <Link className="nav-link text-light" to="/">
+            Blogs
+          </Link>
+        </h2>
+        <ul className="navbar-nav  align-items-center mx-5 flex-row">
+          <li className="nav-item mx-3">
+            <Link className="nav-link " to="/">
+              blogs
+            </Link>
+          </li>
+          <li className="nav-item mx-3 ">
+            <Link className="nav-link" to="/users">
+              users
+            </Link>{" "}
+          </li>
+        </ul>
+        <div className="ms-auto d-flex flex-row align-items-center">
+          <span className="text-light mx-2">
+            {signedUser.name}
+            <span className="text-muted mx-2"> logged In</span>
+          </span>{" "}
+          <button className="btn btn-primary mx-2" onClick={logOut}>
+            logout
+          </button>
+        </div>
       </div>
-      <h2>blogs</h2>
-    </div>
+    </nav>
   );
-};
-
-const headerStyle = {
-  paddingTop: 5,
-  marginBottom: 5,
-  background: "#aaadb3",
 };
 
 export default Header;

@@ -16,22 +16,34 @@ const Comment = ({ blog }) => {
     <div>
       {" "}
       <form onSubmit={onSubmit}>
-        <h1>add commnets</h1>
-        <textarea
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        ></textarea>{" "}
-        <button>add comment</button>
-      </form>
-      {blog && (
-        <div>
-          <ul>
-            {blog.comments.map((comment, i) => (
-              <li key={i}>{comment.comment}</li>
-            ))}
-          </ul>
+        <h3>add commnets</h3>
+        <div className="row mb-3">
+          <div className="col-12">
+            <textarea
+              className="form-control"
+              required
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            ></textarea>{" "}
+          </div>
         </div>
-      )}
+        <div className="row mb-3">
+          <div className="col-12">
+            <button className="w-100 btn btn-primary">add comment</button>
+          </div>
+        </div>
+      </form>
+      <div className="mt-2">
+        {blog && (
+          <div className="list-gorup">
+            {blog.comments.map((comment, i) => (
+              <div className="list-group-item" key={i}>
+                {comment.comment}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

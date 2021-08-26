@@ -39,23 +39,31 @@ export const BlogView = () => {
   }
 
   return (
-    <div>
-      <h1 className="title">{blog.title}</h1>
-      <br />
-      <span className="url">
-        {" "}
-        <Link to={`${blog.url}`}>{blog.url}</Link>
-      </span>
-      <br />
-      Likes <span className="likes">{blog.likes}</span>{" "}
-      <button onClick={() => onLike(blog)}>like</button>
-      <br />
-      {/* <button style={btn} onClick={() => handleDelete(blog)}>
+    <div className="container d-flex justify-content-center">
+      <div className="w-50">
+        <h3 className="title text-center m-3">{blog.title}</h3>
+        <div className="mb-3">
+          <span className="url">
+            {" "}
+            <Link to={`${blog.url}`}>{blog.url}</Link>
+          </span>
+        </div>
+        <div className="mb-3">
+          Likes <span className="likes">{blog.likes}</span>
+          <button className="btn btn-success mx-3" onClick={() => onLike(blog)}>
+            like
+          </button>
+        </div>
+
+        {/* <button style={btn} onClick={() => handleDelete(blog)}>
         remove
       </button> */}
-      <br />
-      added <span className="author"> {blog.author}</span>
-      <Comment blog={blog} />
+        <div className="mb-3">
+          added by<span className="author"> {blog.author}</span>
+        </div>
+
+        <Comment blog={blog} />
+      </div>
     </div>
   );
 };
